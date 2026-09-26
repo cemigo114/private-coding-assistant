@@ -99,15 +99,30 @@ jq -n --arg base_url "$openai_base_url" --arg model "$model" '
           ($model): {
             name: "Private coding model",
             tool_call: true,
-            limit: {context: 16000, output: 2048}
+            limit: {context: 15000, output: 2048},
+            options: {truncate_prompt_tokens: 14000}
           }
         }
       }
     },
-    model: "private-maas/\($model)"
+    model: "private-maas/\($model)",
+    agent: {
+      demo: {
+        description: "One-step MaaS readiness check",
+        mode: "primary",
+        model: "private-maas/\($model)",
+        prompt: "Answer the user directly in one short sentence. Do not call tools.",
+        steps: 1,
+        tools: {
+          bash: false, edit: false, write: false, read: false, grep: false,
+          glob: false, list: false, task: false, todowrite: false,
+          question: false, webfetch: false, skill: false, lsp: false
+        }
+      }
+    }
   }
 ' >"$output/opencode.json"
-rm -f "$output/opencode-auth.json"
+rm -f "$output/opencode-auth.json" "$output/opencode-maas-proxy.mjs"
 
 cat >"$output/continue-config.yaml" <<EOF
 name: Private MaaS Coding Assistant

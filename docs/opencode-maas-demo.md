@@ -78,12 +78,26 @@ opencode
 For a non-interactive readiness check:
 
 ```bash
-opencode run --model "private-maas/$MAAS_MODEL" \
+opencode run --pure --agent demo --model "private-maas/$MAAS_MODEL" \
   "Reply with exactly: OpenCode MaaS ready"
 ```
 
 The generated config passes the key through `{env:MAAS_API_KEY}`. It does not
 write the key into `~/.config/opencode/opencode.json` or an OpenCode auth file.
+It also sets vLLM's `truncate_prompt_tokens` request option to retain headroom
+when OpenCode and vLLM tokenize the same prompt differently.
+
+If global user instructions interfere with the readiness response, run that
+single check with an isolated temporary home. This does not change the normal
+interactive demo configuration:
+
+```bash
+mkdir -p /tmp/opencode-maas-home
+HOME=/tmp/opencode-maas-home \
+XDG_CONFIG_HOME=/tmp/opencode-maas-home/.config \
+opencode run --pure --agent demo --model "private-maas/$MAAS_MODEL" \
+  "Reply with exactly: OpenCode MaaS ready"
+```
 
 ## Validate The Gateway
 
@@ -127,7 +141,7 @@ in the demonstration.
 | `URL rejected` or DNS failure | The DevWorkspace endpoint is cluster-internal. | Pass a public MaaS URL through `--openai-base-url`. |
 | Certificate validation failure | The public listener uses an untrusted certificate. | Install a trusted certificate or the organization CA. |
 | `401` or `403` | The developer key is missing, stale, or does not match the MaaS AuthPolicy. | Regenerate the config for the developer and verify the Secret. |
-| `max_tokens ... max_model_len` | OpenCode request budget exceeds the vLLM maximum. | Increase `--max-model-len` to at least 16,385 or use a runtime with a larger context limit. |
+| `max_tokens ... max_model_len` | The generated config is stale or lacks prompt truncation headroom. | Regenerate it with the current bootstrap script and verify `truncate_prompt_tokens` is present. |
 | New vLLM pod remains Pending | No GPU capacity exists for a rolling update. | Free capacity or coordinate a rollout strategy with the owner of `.spec.replicas`. |
 
 ## Related
