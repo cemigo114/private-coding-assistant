@@ -159,6 +159,8 @@ make ai-serving-undeploy-existing-openshift DELETE_NAMESPACE=1
 | [docs/architecture.md](docs/architecture.md) | Stack, traffic path, diagrams |
 | [docs/requirements.md](docs/requirements.md) | Hardware, software, permissions |
 | [docs/ide-and-extensions.md](docs/ide-and-extensions.md) | Dev Spaces, Continue / Cline / Roo |
+| [docs/desktop-developer-demo.md](docs/desktop-developer-demo.md) | VS Code, Codex, Claude Code, and OpenCode demo |
+| [docs/opencode-maas-demo.md](docs/opencode-maas-demo.md) | OpenCode desktop MaaS demo, architecture, and troubleshooting |
 | [docs/models-and-routing.md](docs/models-and-routing.md) | vLLM, llm-d, RHCL |
 | [docs/semantic-router.md](docs/semantic-router.md) | Official vLLM SR hop, extras, inject |
 | [docs/models-and-hardware.md](docs/models-and-hardware.md) | Changing models and accelerators |

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="510" viewBox="0 0 1120 510" role="img" aria-labelledby="title desc">
+  <title id="title">Sanitized terminal output for an OpenCode MaaS demo</title>
+  <desc id="desc">A terminal showing the generated MaaS configuration, a model listing, and OpenCode replying that MaaS is ready.</desc>
+  <rect width="1120" height="510" rx="18" fill="#151515"/>
+  <path d="M0 52h1120" stroke="#3f3f46"/>
+  <circle cx="34" cy="27" r="9" fill="#ef4444"/><circle cx="62" cy="27" r="9" fill="#f59e0b"/><circle cx="90" cy="27" r="9" fill="#22c55e"/>
+  <text x="125" y="33" fill="#d4d4d8" font-family="Menlo, monospace" font-size="17">opencode-maas-demo</text>
+  <g font-family="Menlo, monospace" font-size="18">
+    <text x="36" y="95" fill="#67e8f9">$</text><text x="60" y="95" fill="#f4f4f5">scripts/bootstrap-developer-demo.sh --user dev-user1 --output ~/private-maas-demo</text>
+    <text x="36" y="128" fill="#a1a1aa">Generated desktop client configuration in /Users/developer/private-maas-demo</text>
+    <text x="36" y="174" fill="#67e8f9">$</text><text x="60" y="174" fill="#f4f4f5">source ~/private-maas-demo/env.sh</text>
+    <text x="36" y="207" fill="#67e8f9">$</text><text x="60" y="207" fill="#f4f4f5">export OPENCODE_CONFIG=~/private-maas-demo/opencode.json</text>
+    <text x="36" y="253" fill="#67e8f9">$</text><text x="60" y="253" fill="#f4f4f5">curl .../v1/models | jq -r '.data[]?.id'</text>
+    <text x="36" y="286" fill="#86efac">Qwen/Qwen2.5-Coder-7B-Instruct</text>
+    <text x="36" y="332" fill="#67e8f9">$</text><text x="60" y="332" fill="#f4f4f5">opencode run --model private-maas/Qwen/Qwen2.5-Coder-7B-Instruct "Reply with exactly: OpenCode MaaS ready"</text>
+    <text x="36" y="378" fill="#a78bfa">&gt; build · Qwen/Qwen2.5-Coder-7B-Instruct</text>
+    <text x="36" y="425" fill="#86efac">OpenCode MaaS ready</text>
+  </g>
+  <text x="36" y="477" fill="#71717a" font-family="Menlo, monospace" font-size="14">Sanitized example: no API key, token, or internal endpoint is displayed.</text>
+</svg>

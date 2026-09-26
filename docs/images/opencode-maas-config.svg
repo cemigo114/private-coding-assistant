@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="540" viewBox="0 0 1120 540" role="img" aria-labelledby="title desc">
+  <title id="title">Sanitized OpenCode MaaS configuration</title>
+  <desc id="desc">A code editor view of the generated OpenCode provider configuration using an environment variable for the MaaS API key.</desc>
+  <rect width="1120" height="540" rx="18" fill="#1e1e1e"/>
+  <rect width="1120" height="55" rx="18" fill="#2d2d30"/><rect y="37" width="1120" height="18" fill="#2d2d30"/>
+  <text x="30" y="35" fill="#f4f4f5" font-family="-apple-system, sans-serif" font-size="18">opencode.json</text>
+  <g font-family="Menlo, monospace" font-size="18">
+    <g fill="#858585"><text x="28" y="97">1</text><text x="28" y="130">2</text><text x="28" y="163">3</text><text x="28" y="196">4</text><text x="28" y="229">5</text><text x="28" y="262">6</text><text x="28" y="295">7</text><text x="28" y="328">8</text><text x="28" y="361">9</text><text x="18" y="394">10</text><text x="18" y="427">11</text><text x="18" y="460">12</text></g>
+    <g fill="#d4d4d4">
+      <text x="72" y="97">{</text><text x="72" y="130">  "$schema": "https://opencode.ai/config.json",</text><text x="72" y="163">  "provider": {</text><text x="72" y="196">    "private-maas": {</text><text x="72" y="229">      "npm": "@ai-sdk/openai-compatible",</text><text x="72" y="262">      "options": {</text><text x="72" y="295">        "baseURL": "https://maas.apps.example.com/.../v1",</text><text x="72" y="328">        "apiKey": "{env:MAAS_API_KEY}"</text><text x="72" y="361">      },</text><text x="72" y="394">      "models": { "Qwen/Qwen2.5-Coder-7B-Instruct": {} }</text><text x="72" y="427">    }</text><text x="72" y="460">  }</text><text x="72" y="493">}</text>
+    </g>
+  </g>
+  <rect x="563" y="307" width="355" height="42" rx="7" fill="#14532d"/>
+  <text x="577" y="335" fill="#bbf7d0" font-family="Menlo, monospace" font-size="16">Key loaded only from environment</text>
+</svg>
