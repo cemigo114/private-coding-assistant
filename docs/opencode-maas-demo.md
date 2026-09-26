@@ -33,6 +33,8 @@ desktop client.
 
 ![Sanitized OpenCode MaaS terminal capture](images/opencode-maas-terminal.svg)
 
+[![Watch the recorded CLI demo](images/opencode-maas-demo-preview.png)](videos/opencode-maas-demo.mp4)
+
 ## Prerequisites
 
 - OpenCode installed on the developer workstation.
@@ -79,7 +81,7 @@ For a non-interactive readiness check:
 
 ```bash
 opencode run --pure --agent demo --model "private-maas/$MAAS_MODEL" \
-  "Reply with exactly: OpenCode MaaS ready"
+  "Run the connectivity check."
 ```
 
 The generated config passes the key through `{env:MAAS_API_KEY}`. It does not
@@ -96,7 +98,7 @@ mkdir -p /tmp/opencode-maas-home
 HOME=/tmp/opencode-maas-home \
 XDG_CONFIG_HOME=/tmp/opencode-maas-home/.config \
 opencode run --pure --agent demo --model "private-maas/$MAAS_MODEL" \
-  "Reply with exactly: OpenCode MaaS ready"
+  "Run the connectivity check."
 ```
 
 ## Validate The Gateway
@@ -133,6 +135,21 @@ in the demonstration.
 5. Show MaaS metrics or logs to connect the client request to gateway usage.
 6. Delete `~/private-maas-demo` and rotate the developer key after a shared
    screen demonstration.
+
+## Record The CLI Demo
+
+The committed VHS tape runs the same live checks and does not print the API
+key. Set the target cluster values in the recorder process, then render the
+MP4 from the repository root:
+
+```bash
+export PCA_DEMO_MAAS_URL="https://maas.apps.example.com/private-assistant-ai-serving/qwen25-coder-7b/v1"
+vhs docs/videos/opencode-maas-demo.tape
+```
+
+The sandbox used for the checked-in recording has a self-signed certificate,
+so its recorder process also sets `PCA_DEMO_INSECURE=1`. Do not set that option
+for customer demonstrations; install the organization CA instead.
 
 ## Troubleshooting
 

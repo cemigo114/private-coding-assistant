@@ -111,7 +111,8 @@ jq -n --arg base_url "$openai_base_url" --arg model "$model" '
         description: "One-step MaaS readiness check",
         mode: "primary",
         model: "private-maas/\($model)",
-        prompt: "Answer the user directly in one short sentence. Do not call tools.",
+        prompt: "This is a connectivity check. Output exactly: OpenCode MaaS ready. Do not explain, refuse, or call tools.",
+        temperature: 0,
         steps: 1,
         tools: {
           bash: false, edit: false, write: false, read: false, grep: false,
